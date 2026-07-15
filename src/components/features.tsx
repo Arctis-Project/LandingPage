@@ -19,19 +19,19 @@ export function Features() {
 
   return (
     <section id="features" className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div ref={ref} className={cn("text-center mb-16", inView ? "animate-fade-up" : "opacity-0")}>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-[var(--md-primary)]">Features</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">What We&apos;re Building</h2>
-          <p className="text-[var(--text-sec)] text-lg max-w-xl mx-auto font-light">Arctis Project is a vision for a better, more open computing ecosystem.</p>
+          <h2 className="text-3xl md:text-[45px] font-bold mb-4 leading-tight">What We&apos;re Building</h2>
+          <p className="text-[var(--text-sec)] text-lg max-w-xl mx-auto">Arctis Project is a vision for a better, more open computing ecosystem.</p>
         </div>
 
         <div className={cn("grid gap-5 sm:grid-cols-2 lg:grid-cols-3", inView ? "stagger" : "opacity-0")}>
           {features.map((f) => (
             <Card key={f.title} className="group">
               <CardHeader>
-                <div className="mb-2 flex h-12 w-12 items-center justify-center rounded-2xl bg-[var(--md-secondary-container)] text-[var(--md-on-secondary-container)] transition-all duration-200 group-hover:bg-[var(--md-primary)] group-hover:text-[var(--md-on-primary)]">
-                  <f.icon className="h-6 w-6" />
+                <div className="mb-1 flex h-14 w-14 items-center justify-center rounded-[var(--md-shape-l)] bg-[var(--md-secondary-container)] text-[var(--md-on-secondary-container)] transition-all duration-200 group-hover:bg-[var(--md-primary)] group-hover:text-[var(--md-on-primary)]">
+                  <f.icon className="h-7 w-7" />
                 </div>
                 <CardTitle>{f.title}</CardTitle>
               </CardHeader>

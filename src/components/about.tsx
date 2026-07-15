@@ -15,19 +15,19 @@ export function About() {
 
   return (
     <section id="about" className="py-28 px-6">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         <div ref={ref} className={cn("text-center mb-16", inView ? "animate-fade-up" : "opacity-0")}>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-[var(--md-primary)]">About</p>
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">About Arctis Project</h2>
-          <p className="text-[var(--text-sec)] text-lg max-w-xl mx-auto font-light">Born from a passion for open-source and a desire to create something meaningful.</p>
+          <h2 className="text-3xl md:text-[45px] font-bold mb-4 leading-tight">About Arctis Project</h2>
+          <p className="text-[var(--text-sec)] text-lg max-w-xl mx-auto">Born from a passion for open-source and a desire to create something meaningful.</p>
         </div>
 
         <div className={cn("grid gap-5 md:grid-cols-3", inView ? "stagger" : "opacity-0")}>
           {items.map((item) => (
-            <div key={item.title} className="rounded-[28px] bg-[var(--bg-card)] border border-[var(--border-c)]/50 p-8 text-center transition-all duration-300 hover:shadow-md hover:border-[var(--border-c)]">
+            <div key={item.title} className="state-layer rounded-[var(--md-shape-xl)] bg-[var(--bg-card)] p-8 text-center">
               <div className="mb-5 flex justify-center">
-                <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[var(--md-secondary-container)] text-[var(--md-on-secondary-container)]">
-                  <item.icon className="h-7 w-7" />
+                <div className="flex h-16 w-16 items-center justify-center rounded-[var(--md-shape-l)] bg-[var(--md-secondary-container)] text-[var(--md-on-secondary-container)]">
+                  <item.icon className="h-8 w-8" />
                 </div>
               </div>
               <h3 className="text-lg font-medium mb-2">{item.title}</h3>

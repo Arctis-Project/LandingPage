@@ -14,7 +14,7 @@ export function About() {
   const { ref, inView } = useInView();
 
   return (
-    <section id="about" className="py-28 px-6 bg-[var(--bg-elevated)]">
+    <section id="about" className="py-28 px-6">
       <div className="max-w-5xl mx-auto">
         <div ref={ref} className={cn("text-center mb-16", inView ? "animate-fade-up" : "opacity-0")}>
           <p className="text-xs font-semibold tracking-[0.2em] uppercase mb-3 text-[var(--md-primary)]">About</p>

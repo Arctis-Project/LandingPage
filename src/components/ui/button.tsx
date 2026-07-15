@@ -4,7 +4,7 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-[350ms] ease-[cubic-bezier(0.42,1.67,0.21,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[0.97]",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[0.97] cursor-pointer select-none",
   {
     variants: {
       variant: {
@@ -13,12 +13,14 @@ const buttonVariants = cva(
         destructive:
           "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 hover:shadow-md",
         outline:
-          "border-2 border-border bg-transparent hover:bg-m3-surface-variant hover:border-foreground/20 hover:shadow-[var(--m3-sys-elevation-1)]",
+          "border border-border/60 bg-transparent backdrop-blur-sm hover:bg-m3-surface-variant hover:border-foreground/20 hover:shadow-[var(--m3-sys-elevation-1)]",
         secondary:
           "bg-m3-secondary-container text-m3-on-secondary-container hover:shadow-[var(--m3-sys-elevation-1)] hover:scale-[1.02]",
         ghost:
           "hover:bg-m3-surface-variant hover:shadow-[var(--m3-sys-elevation-1)]",
-        link: "text-primary underline-offset-4 hover:underline",
+        link: "text-foreground underline-offset-4 hover:underline",
+        discord:
+          "bg-[#5865F2] text-white shadow-[0_2px_12px_rgba(88,101,242,0.3)] hover:bg-[#4752C4] hover:shadow-[0_4px_20px_rgba(88,101,242,0.4)] hover:scale-[1.03]",
       },
       size: {
         default: "h-11 px-6 py-2.5 rounded-[var(--m3-sys-shape-full)]",

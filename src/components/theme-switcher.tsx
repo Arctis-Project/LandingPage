@@ -22,12 +22,12 @@ export function ThemeSwitcher() {
           size="icon"
           className="h-10 w-10 rounded-[var(--m3-sys-shape-full)]"
         >
-          <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-[350ms] ease-[cubic-bezier(0.42,1.67,0.21,0.9)] dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-[350ms] ease-[cubic-bezier(0.42,1.67,0.21,0.9)] dark:rotate-0 dark:scale-100" />
+          <Sun className="h-5 w-5 rotate-0 scale-100 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="rounded-[var(--m3-sys-shape-extra-large)]">
+      <DropdownMenuContent align="end" className="rounded-[var(--m3-sys-shape-2xl)] m3-glass">
         <DropdownMenuItem onClick={() => setTheme("light")} className="rounded-[var(--m3-sys-shape-full)] gap-3">
           <Sun className="h-4 w-4" />
           Light

@@ -31,13 +31,13 @@ export function About() {
   const { ref: gridRef, isInView: gridVisible } = useInView();
 
   return (
-    <section id="about" className="py-28 px-4 bg-m3-surface-container-low/50">
+    <section id="about" className="py-28 px-5">
       <div className="mx-auto max-w-4xl">
         <div
           ref={headerRef}
           className={cn(
-            "text-center mb-16 transition-all duration-[700ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)]",
-            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            "text-center mb-16",
+            headerVisible ? "animate-m3e-up" : "opacity-0"
           )}
         >
           <h2
@@ -46,28 +46,24 @@ export function About() {
           >
             About Arctis Project
           </h2>
-          <p className="text-muted-foreground text-lg leading-relaxed">
+          <p className="text-muted-foreground text-lg leading-relaxed font-light">
             Born from a passion for open-source and a desire to create something meaningful.
           </p>
         </div>
 
-        <div ref={gridRef} className="grid gap-8 md:grid-cols-3 m3e-stagger">
-          {items.map((item, i) => (
+        <div ref={gridRef} className={cn("grid gap-8 md:grid-cols-3", gridVisible ? "m3e-stagger" : "opacity-0")}>
+          {items.map((item) => (
             <div
               key={item.title}
-              className={cn(
-                "text-center p-8 rounded-[var(--m3-sys-shape-extra-large)] bg-m3-surface border border-border/50 transition-all duration-[500ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)] hover:shadow-[var(--m3-sys-elevation-2)] hover:scale-[1.03] hover:border-foreground/15 cursor-default",
-                gridVisible ? "opacity-100" : "opacity-0"
-              )}
-              style={{ animationDelay: gridVisible ? `${i * 100}ms` : undefined }}
+              className="text-center p-8 m3-glass rounded-[var(--m3-sys-shape-2xl)] m3e-hover cursor-default"
             >
               <div className="mb-5 flex justify-center">
-                <div className="flex h-16 w-16 items-center justify-center rounded-[var(--m3-sys-shape-extra-large)] bg-m3-surface-variant transition-all duration-[450ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)] group-hover:bg-m3-primary group-hover:text-m3-on-primary group-hover:scale-110 group-hover:rotate-6">
+                <div className="flex h-16 w-16 items-center justify-center rounded-[var(--m3-sys-shape-xl)] bg-m3-surface-variant transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-m3-primary group-hover:text-m3-on-primary group-hover:scale-110 group-hover:rotate-6">
                   <item.icon className="h-8 w-8" />
                 </div>
               </div>
               <h3 className="text-xl font-semibold mb-3">{item.title}</h3>
-              <p className="text-muted-foreground text-[0.9rem] leading-relaxed">
+              <p className="text-muted-foreground text-[0.9rem] leading-relaxed font-light">
                 {item.description}
               </p>
             </div>

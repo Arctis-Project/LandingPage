@@ -13,7 +13,7 @@ export function Navbar() {
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 10);
+    const onScroll = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -21,21 +21,21 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-[500ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)]",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
         scrolled
-          ? "bg-background/85 backdrop-blur-2xl shadow-[var(--m3-sys-elevation-2)] border-b border-border/50"
+          ? "m3-glass shadow-[var(--m3-sys-elevation-2)]"
           : "bg-transparent backdrop-blur-none border-b-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4">
+      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
         <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative overflow-hidden rounded-[var(--m3-sys-shape-medium)] transition-all duration-[350ms] ease-[cubic-bezier(0.42,1.67,0.21,0.9)] group-hover:scale-110 group-hover:shadow-[var(--m3-sys-elevation-2)]">
+          <div className="relative overflow-hidden rounded-[var(--m3-sys-shape-md)] transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:shadow-[var(--m3-sys-elevation-2)]">
             <Image
               src="/arctis_square.png"
-              alt="Arctis Project Logo"
+              alt="Arctis Project"
               width={36}
               height={36}
-              className="rounded-[var(--m3-sys-shape-medium)]"
+              className="rounded-[var(--m3-sys-shape-md)]"
             />
           </div>
           <span className="text-lg font-semibold tracking-tight">Arctis Project</span>
@@ -57,13 +57,13 @@ export function Navbar() {
               Founders
             </Button>
           </Link>
-          <div className="ml-2 flex items-center gap-1">
+          <div className="ml-2 flex items-center gap-1.5">
             <Button variant="ghost" size="icon" className="rounded-[var(--m3-sys-shape-full)]" asChild>
               <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer">
                 <Github className="h-5 w-5" />
               </a>
             </Button>
-            <Button size="sm" className="rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
+            <Button variant="discord" size="sm" className="rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
               <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-4 w-4" />
                 Discord
@@ -84,13 +84,13 @@ export function Navbar() {
             <div className="relative h-5 w-5">
               <Menu
                 className={cn(
-                  "absolute inset-0 transition-all duration-[350ms] ease-[cubic-bezier(0.42,1.67,0.21,0.9)]",
+                  "absolute inset-0 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
                   isOpen ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
                 )}
               />
               <X
                 className={cn(
-                  "absolute inset-0 transition-all duration-[350ms] ease-[cubic-bezier(0.42,1.67,0.21,0.9)]",
+                  "absolute inset-0 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
                   isOpen ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
                 )}
               />
@@ -99,14 +99,13 @@ export function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <div
         className={cn(
-          "md:hidden overflow-hidden transition-all duration-[500ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)]",
-          isOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+          "md:hidden overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
+          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         )}
       >
-        <div className="border-t bg-background/95 backdrop-blur-2xl px-4 py-4 space-y-1 animate-m3e-slide-down">
+        <div className="m3-glass border-t px-5 py-5 space-y-1 animate-m3e-in">
           <Link href="#features" onClick={() => setIsOpen(false)}>
             <Button variant="ghost" className="w-full justify-start rounded-[var(--m3-sys-shape-full)]">Features</Button>
           </Link>
@@ -116,14 +115,14 @@ export function Navbar() {
           <Link href="#founders" onClick={() => setIsOpen(false)}>
             <Button variant="ghost" className="w-full justify-start rounded-[var(--m3-sys-shape-full)]">Founders</Button>
           </Link>
-          <div className="flex gap-2 pt-2">
+          <div className="flex gap-2 pt-3">
             <Button variant="outline" className="flex-1 rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
               <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer">
                 <Github className="h-4 w-4" />
                 GitHub
               </a>
             </Button>
-            <Button className="flex-1 rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
+            <Button variant="discord" className="flex-1 rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
               <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer">
                 <MessageCircle className="h-4 w-4" />
                 Discord

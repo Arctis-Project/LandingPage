@@ -44,13 +44,13 @@ export function Features() {
   const { ref: gridRef, isInView: gridVisible } = useInView({ threshold: 0.05 });
 
   return (
-    <section id="features" className="py-28 px-4">
+    <section id="features" className="py-28 px-5">
       <div className="mx-auto max-w-6xl">
         <div
           ref={headerRef}
           className={cn(
-            "text-center mb-16 transition-all duration-[700ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)]",
-            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+            "text-center mb-16",
+            headerVisible ? "animate-m3e-up" : "opacity-0"
           )}
         >
           <h2
@@ -59,27 +59,18 @@ export function Features() {
           >
             What We&apos;re Building
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed font-light">
             Arctis Project is more than just software. It&apos;s a vision for a better,
             more open computing ecosystem.
           </p>
         </div>
 
-        <div ref={gridRef} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 m3e-stagger">
-          {features.map((feature, i) => (
-            <Card
-              key={feature.title}
-              className={cn(
-                "group",
-                gridVisible ? "opacity-100" : "opacity-0"
-              )}
-              style={{
-                animationDelay: gridVisible ? `${i * 80}ms` : undefined,
-              }}
-            >
+        <div ref={gridRef} className={cn("grid gap-6 sm:grid-cols-2 lg:grid-cols-3", gridVisible ? "m3e-stagger" : "opacity-0")}>
+          {features.map((feature) => (
+            <Card key={feature.title} className="group">
               <CardHeader>
-                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-[var(--m3-sys-shape-large)] bg-m3-surface-variant text-foreground transition-all duration-[450ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)] group-hover:bg-m3-primary group-hover:text-m3-on-primary group-hover:scale-110 group-hover:shadow-[var(--m3-sys-elevation-2)] group-hover:rotate-3">
-                  <feature.icon className="h-7 w-7 transition-transform duration-[450ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)] group-hover:scale-110" />
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-[var(--m3-sys-shape-xl)] bg-m3-surface-variant text-foreground transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-m3-primary group-hover:text-m3-on-primary group-hover:scale-110 group-hover:rotate-3 group-hover:shadow-[var(--m3-sys-elevation-2)]">
+                  <feature.icon className="h-7 w-7 transition-transform duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110" />
                 </div>
                 <CardTitle className="text-xl">{feature.title}</CardTitle>
               </CardHeader>

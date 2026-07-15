@@ -3,6 +3,8 @@
 import * as React from "react";
 import { Shield, Zap, Smartphone, Monitor, Code, Users } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
+import { useInView } from "@/lib/use-in-view";
+import { cn } from "@/lib/utils";
 
 const features = [
   {
@@ -38,30 +40,51 @@ const features = [
 ];
 
 export function Features() {
+  const { ref: headerRef, isInView: headerVisible } = useInView();
+  const { ref: gridRef, isInView: gridVisible } = useInView({ threshold: 0.05 });
+
   return (
-    <section id="features" className="py-24 px-4">
+    <section id="features" className="py-28 px-4">
       <div className="mx-auto max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-5xl mb-4">
+        <div
+          ref={headerRef}
+          className={cn(
+            "text-center mb-16 transition-all duration-[700ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)]",
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          )}
+        >
+          <h2
+            className="font-bold tracking-tight mb-4"
+            style={{ fontSize: "clamp(1.875rem, 4vw, 3rem)" }}
+          >
             What We&apos;re Building
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Arctis Project is more than just software. It&apos;s a vision for a better, 
+          <p className="text-muted-foreground text-lg max-w-2xl mx-auto leading-relaxed">
+            Arctis Project is more than just software. It&apos;s a vision for a better,
             more open computing ecosystem.
           </p>
         </div>
 
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {features.map((feature) => (
-            <Card key={feature.title} className="group hover:border-foreground/20 transition-all duration-300">
+        <div ref={gridRef} className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 m3e-stagger">
+          {features.map((feature, i) => (
+            <Card
+              key={feature.title}
+              className={cn(
+                "group",
+                gridVisible ? "opacity-100" : "opacity-0"
+              )}
+              style={{
+                animationDelay: gridVisible ? `${i * 80}ms` : undefined,
+              }}
+            >
               <CardHeader>
-                <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-secondary text-secondary-foreground transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                  <feature.icon className="h-7 w-7" />
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-[var(--m3-sys-shape-large)] bg-m3-surface-variant text-foreground transition-all duration-[450ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)] group-hover:bg-m3-primary group-hover:text-m3-on-primary group-hover:scale-110 group-hover:shadow-[var(--m3-sys-elevation-2)] group-hover:rotate-3">
+                  <feature.icon className="h-7 w-7 transition-transform duration-[450ms] ease-[cubic-bezier(0.35,1.9,0.22,0.88)] group-hover:scale-110" />
                 </div>
                 <CardTitle className="text-xl">{feature.title}</CardTitle>
               </CardHeader>
               <CardContent>
-                <CardDescription className="text-sm leading-relaxed">
+                <CardDescription className="text-[0.9rem] leading-relaxed">
                   {feature.description}
                 </CardDescription>
               </CardContent>

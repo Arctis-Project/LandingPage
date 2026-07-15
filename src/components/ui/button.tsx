@@ -4,23 +4,28 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap font-medium transition-all duration-[350ms] ease-[cubic-bezier(0.42,1.67,0.21,0.9)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 active:scale-[0.97]",
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground shadow-md hover:bg-primary/90 hover:shadow-lg",
-        destructive: "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90",
-        outline: "border border-input bg-background shadow-sm hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
+        default:
+          "bg-m3-primary text-m3-on-primary shadow-[var(--m3-sys-elevation-1)] hover:shadow-[var(--m3-sys-elevation-2)] hover:scale-[1.03]",
+        destructive:
+          "bg-destructive text-destructive-foreground shadow-sm hover:bg-destructive/90 hover:shadow-md",
+        outline:
+          "border-2 border-border bg-transparent hover:bg-m3-surface-variant hover:border-foreground/20 hover:shadow-[var(--m3-sys-elevation-1)]",
+        secondary:
+          "bg-m3-secondary-container text-m3-on-secondary-container hover:shadow-[var(--m3-sys-elevation-1)] hover:scale-[1.02]",
+        ghost:
+          "hover:bg-m3-surface-variant hover:shadow-[var(--m3-sys-elevation-1)]",
         link: "text-primary underline-offset-4 hover:underline",
       },
       size: {
-        default: "h-10 px-5 py-2 rounded-2xl",
-        sm: "h-9 rounded-xl px-3",
-        lg: "h-12 rounded-2xl px-8 text-base",
-        xl: "h-14 rounded-3xl px-10 text-lg",
-        icon: "h-10 w-10 rounded-2xl",
+        default: "h-11 px-6 py-2.5 rounded-[var(--m3-sys-shape-full)]",
+        sm: "h-9 rounded-[var(--m3-sys-shape-full)] px-4 text-[0.8125rem]",
+        lg: "h-13 rounded-[var(--m3-sys-shape-full)] px-8 text-[1rem]",
+        xl: "h-14 rounded-[var(--m3-sys-shape-full)] px-10 text-[1.0625rem] font-semibold",
+        icon: "h-11 w-11 rounded-[var(--m3-sys-shape-full)]",
       },
     },
     defaultVariants: {

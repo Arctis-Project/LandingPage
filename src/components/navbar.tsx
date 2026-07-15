@@ -1,136 +1,72 @@
 "use client";
-
 import * as React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Github, MessageCircle, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { ThemeSwitcher } from "@/components/theme-switcher";
 import { cn } from "@/lib/utils";
 
 export function Navbar() {
-  const [isOpen, setIsOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const [scrolled, setScrolled] = React.useState(false);
 
   React.useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const h = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", h, { passive: true });
+    return () => window.removeEventListener("scroll", h);
   }, []);
 
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-        scrolled
-          ? "m3-glass shadow-[var(--m3-sys-elevation-2)]"
-          : "bg-transparent backdrop-blur-none border-b-transparent"
+        "fixed top-0 inset-x-0 z-50 transition-all duration-300",
+        scrolled ? "bg-[var(--bg)]/80 backdrop-blur-xl border-b border-[var(--border)]" : "bg-transparent"
       )}
     >
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-        <Link href="/" className="flex items-center gap-3 group">
-          <div className="relative overflow-hidden rounded-[var(--m3-sys-shape-md)] transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-110 group-hover:shadow-[var(--m3-sys-elevation-2)]">
-            <Image
-              src="/arctis_square.png"
-              alt="Arctis Project"
-              width={36}
-              height={36}
-              className="rounded-[var(--m3-sys-shape-md)]"
-            />
-          </div>
-          <span className="text-lg font-semibold tracking-tight">Arctis Project</span>
+      <div className="mx-auto flex h-16 max-w-5xl items-center justify-between px-6">
+        <Link href="/" className="flex items-center gap-3">
+          <Image src="/arctis_square.png" alt="Arctis" width={32} height={32} className="rounded-xl" />
+          <span className="text-base font-semibold text-[var(--text)]">Arctis Project</span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
-          <Link href="#features">
-            <Button variant="ghost" size="sm" className="rounded-[var(--m3-sys-shape-full)]">
-              Features
-            </Button>
-          </Link>
-          <Link href="#about">
-            <Button variant="ghost" size="sm" className="rounded-[var(--m3-sys-shape-full)]">
-              About
-            </Button>
-          </Link>
-          <Link href="#founders">
-            <Button variant="ghost" size="sm" className="rounded-[var(--m3-sys-shape-full)]">
-              Founders
-            </Button>
-          </Link>
-          <div className="ml-2 flex items-center gap-1.5">
-            <Button variant="ghost" size="icon" className="rounded-[var(--m3-sys-shape-full)]" asChild>
-              <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer">
-                <Github className="h-5 w-5" />
-              </a>
-            </Button>
-            <Button variant="discord" size="sm" className="rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
-              <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-4 w-4" />
-                Discord
-              </a>
-            </Button>
-            <ThemeSwitcher />
-          </div>
+          <Link href="#features" className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors rounded-full hover:bg-[var(--surface)]">Features</Link>
+          <Link href="#about" className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors rounded-full hover:bg-[var(--surface)]">About</Link>
+          <Link href="#founders" className="px-4 py-2 text-sm text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors rounded-full hover:bg-[var(--surface)]">Founders</Link>
+          <div className="w-px h-5 bg-[var(--border)] mx-2" />
+          <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer" className="p-2 text-[var(--text-secondary)] hover:text-[var(--text)] transition-colors rounded-full hover:bg-[var(--surface)]">
+            <Github className="h-5 w-5" />
+          </a>
+          <Button variant="discord" size="sm" className="ml-1" asChild>
+            <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer">
+              <MessageCircle className="h-4 w-4" />
+              Discord
+            </a>
+          </Button>
         </nav>
 
         <div className="flex md:hidden items-center gap-2">
-          <ThemeSwitcher />
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-[var(--m3-sys-shape-full)]"
-            onClick={() => setIsOpen(!isOpen)}
-          >
-            <div className="relative h-5 w-5">
-              <Menu
-                className={cn(
-                  "absolute inset-0 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-                  isOpen ? "rotate-90 scale-0 opacity-0" : "rotate-0 scale-100 opacity-100"
-                )}
-              />
-              <X
-                className={cn(
-                  "absolute inset-0 transition-all duration-[600ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-                  isOpen ? "rotate-0 scale-100 opacity-100" : "-rotate-90 scale-0 opacity-0"
-                )}
-              />
-            </div>
-          </Button>
+          <button onClick={() => setOpen(!open)} className="p-2 text-[var(--text-secondary)] hover:text-[var(--text)] rounded-full hover:bg-[var(--surface)] transition-colors">
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 
-      <div
-        className={cn(
-          "md:hidden overflow-hidden transition-all duration-[800ms] ease-[cubic-bezier(0.22,1,0.36,1)]",
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
-        )}
-      >
-        <div className="m3-glass border-t px-5 py-5 space-y-1 animate-m3e-in">
-          <Link href="#features" onClick={() => setIsOpen(false)}>
-            <Button variant="ghost" className="w-full justify-start rounded-[var(--m3-sys-shape-full)]">Features</Button>
-          </Link>
-          <Link href="#about" onClick={() => setIsOpen(false)}>
-            <Button variant="ghost" className="w-full justify-start rounded-[var(--m3-sys-shape-full)]">About</Button>
-          </Link>
-          <Link href="#founders" onClick={() => setIsOpen(false)}>
-            <Button variant="ghost" className="w-full justify-start rounded-[var(--m3-sys-shape-full)]">Founders</Button>
-          </Link>
-          <div className="flex gap-2 pt-3">
-            <Button variant="outline" className="flex-1 rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
-              <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer">
-                <Github className="h-4 w-4" />
-                GitHub
-              </a>
-            </Button>
-            <Button variant="discord" className="flex-1 rounded-[var(--m3-sys-shape-full)] gap-2" asChild>
-              <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer">
-                <MessageCircle className="h-4 w-4" />
-                Discord
-              </a>
-            </Button>
+      {open && (
+        <div className="md:hidden border-t border-[var(--border)] bg-[var(--bg-elevated)] px-6 py-4 space-y-1 animate-fade-in">
+          <Link href="#features" onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text)] rounded-xl hover:bg-[var(--surface)] transition-colors">Features</Link>
+          <Link href="#about" onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text)] rounded-xl hover:bg-[var(--surface)] transition-colors">About</Link>
+          <Link href="#founders" onClick={() => setOpen(false)} className="block px-4 py-2.5 text-sm text-[var(--text-secondary)] hover:text-[var(--text)] rounded-xl hover:bg-[var(--surface)] transition-colors">Founders</Link>
+          <div className="flex gap-3 pt-3">
+            <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm border border-[var(--border)] rounded-full text-[var(--text-secondary)] hover:text-[var(--text)] hover:bg-[var(--surface)] transition-colors">
+              <Github className="h-4 w-4" /> GitHub
+            </a>
+            <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm bg-[#5865F2] text-white rounded-full hover:bg-[#4752C4] transition-colors">
+              <MessageCircle className="h-4 w-4" /> Discord
+            </a>
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 }

@@ -16,10 +16,6 @@ export function Hero() {
           <Image src="/arctis_square.png" alt="Arctis Project" width={96} height={96} className="mx-auto rounded-[28px] shadow-lg" priority />
         </div>
 
-        <p className={cn("text-xs font-semibold tracking-[0.2em] uppercase mb-4 text-[var(--md-primary)]", inView ? "animate-fade-up" : "opacity-0")}>
-          Coming Soon
-        </p>
-
         <h1 className={cn("text-5xl md:text-7xl font-bold tracking-tight mb-6", inView ? "animate-fade-up" : "opacity-0")} style={{ animationDelay: "80ms" }}>
           Arctis Project
         </h1>

@@ -13,7 +13,7 @@ const buttonVariants = cva(
         outlined: "border border-[var(--md-outline)] bg-transparent text-[var(--md-primary)]",
         text: "text-[var(--md-primary)]",
         ghost: "text-[var(--text-sec)]",
-        discord: "bg-[#5865F2] text-white hover:bg-[#4752C4] shadow-sm",
+        discord: "bg-[#5865F2] !text-white hover:bg-[#4752C4] shadow-sm",
       },
       size: {
         default: "h-10 px-6 rounded-[var(--md-shape-full)]",

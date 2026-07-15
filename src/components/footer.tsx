@@ -20,7 +20,7 @@ export function Footer() {
           <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer" className="state-layer h-10 w-10 flex items-center justify-center rounded-full text-[var(--text-sec)] hover:text-[var(--text)]">
             <Github className="h-5 w-5" />
           </a>
-          <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#5865F2] text-white text-sm font-medium hover:bg-[#4752C4] transition-colors">
+          <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#5865F2] !text-white text-sm font-medium hover:bg-[#4752C4] transition-colors">
             <MessageCircle className="h-4 w-4" />
             Discord
           </a>

@@ -76,7 +76,7 @@ export function Navbar() {
             <a href="https://github.com/Arctis-Project" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium border border-[var(--md-outline)] rounded-full text-[var(--text-sec)] hover:bg-[var(--md-surface-container-high)] transition-all">
               <Github className="h-4 w-4" /> GitHub
             </a>
-            <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium bg-[#5865F2] text-white rounded-full hover:bg-[#4752C4] transition-colors">
+            <a href="https://discord.gg/GgKCuySH2R" target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 px-4 py-2.5 text-sm font-medium bg-[#5865F2] !text-white rounded-full hover:bg-[#4752C4] transition-colors">
               <MessageCircle className="h-4 w-4" /> Discord
             </a>
           </div>
